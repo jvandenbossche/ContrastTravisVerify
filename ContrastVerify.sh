@@ -20,9 +20,14 @@ CONTRAST_LOW_COUNT=0
 CONTRAST_NOTE_COUNT=0
 
 # IMPORT SETTINGS FROM "ContrastTravis.conf"
-
+if [ ! -f ContrastTravis.conf ]; then
+    echo "ERROR - ContrastTravis.conf Plug-in Config File Missing"
+    echo "SCRIPT ABORT"
+    exit 1
+fi
+source ContrastTravis.conf
 echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-"
-echo "IBM Travis Build Vulnerability Threshold Settings"
+echo "Travis Build Vulnerability Threshold Settings"
 echo "If current open vulnerabilities exceeds thresholds, the build will be failed"
 echo "Critical > $CONTRAST_CRITICAL_COUNT"
 echo "High     > $CONTRAST_HIGH_COUNT"
